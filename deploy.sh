@@ -1,25 +1,6 @@
 #!/bin/bash
 
 echo "Create Guestbook"
-IP_ADDR=$(bx cs workers $CLUSTER_NAME | grep normal | awk '{ print $2 }')
-if [ -z $IP_ADDR ]; then
-  echo "$CLUSTER_NAME not created or workers not ready"
-  exit 1
-fi
-
-echo -e "Configuring vars"
-exp=$(bx cs cluster-config $CLUSTER_NAME | grep export)
-if [ $? -ne 0 ]; then
-  echo "Cluster $CLUSTER_NAME not created or not ready."
-  exit 1
-fi
-eval "$exp"
-
-if [ -n "$CLUSTER_NAMESPACE" ]; then 
-  kubectl config set-context $(kubectl config current-context) --namespace="$CLUSTER_NAMESPACE"
-fi
-echo "kubectl config view | grep namespace:"
-kubectl config view | grep namespace:
 
 echo -e "Downloading guestbook yml"
 curl --silent "https://raw.githubusercontent.com/kubernetes/kubernetes/master/examples/guestbook/all-in-one/guestbook-all-in-one.yaml" > guestbook.yml
