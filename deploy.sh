@@ -7,6 +7,14 @@ fi
 echo "kubectl config view | grep namespace:"
 kubectl config view | grep namespace:
 
+echo "kubectl get namespaces"
+kubectl get namespaces
+
+echo "kubectl config get-contexts"
+kubectl config get-contexts
+
+echo "kubectl cluster-info"
+kubectl cluster-info
 echo "Create Guestbook"
 
 echo -e "Downloading guestbook yml"
