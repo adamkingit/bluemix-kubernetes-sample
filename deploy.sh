@@ -3,6 +3,10 @@
 
 export KUBECONFIG=$(pwd)/filledKubeConfig.yml
 echo "KUBECONFIG== $KUBECONFIG"
+if [ -z "$CLUSTER_NAMESPACE" ]; then
+  exit 1
+fi
+
 if [ -n "$CLUSTER_NAMESPACE" ]; then
   kubectl config set-context "$CLUSTER_NAME" --namespace="$CLUSTER_NAMESPACE"
 fi
