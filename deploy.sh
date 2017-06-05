@@ -16,7 +16,7 @@ fi
 eval "$exp"
 
 if [ -n "$CLUSTER_NAMESPACE" ]; then 
-  kubectl config set-context $(kubectl config current-context) --namespace=
+  kubectl config set-context $(kubectl config current-context) --namespace="$CLUSTER_NAMESPACE"
 fi
 echo "kubectl config view | grep namespace:"
 kubectl config view | grep namespace:
