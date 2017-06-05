@@ -4,7 +4,7 @@
 export KUBECONFIG=$(pwd)/filledKubeConfig.yml
 echo "KUBECONFIG== $KUBECONFIG"
 if [ -n "$CLUSTER_NAMESPACE" ]; then
-  kubectl config set-context minikube --namespace="$CLUSTER_NAMESPACE"
+  kubectl config set-context "$CLUSTER_NAME" --namespace="$CLUSTER_NAMESPACE"
 fi
 echo "kubectl config view | grep namespace:"
 kubectl config view | grep namespace:
